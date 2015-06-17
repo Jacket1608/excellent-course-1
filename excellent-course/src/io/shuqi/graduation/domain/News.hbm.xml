@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2015 9:57:30 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="io.shuqi.graduation.domain.News" table="t_NEWS">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="title" type="java.lang.String">
+            <column name="TITLE" />
+        </property>
+        <property name="content" type="java.lang.String">
+            <column name="CONTENT" sql-type="text"/>
+        </property>
+        <property name="hot" type="boolean">
+            <column name="HOT" />
+        </property>
+        <property name="source" type="java.lang.String">
+            <column name="SOURCE" />
+        </property>
+        <property name="type" type="java.lang.String">
+            <column name="TYPE" />
+        </property>
+        <property name="readTimes" type="java.lang.Long">
+            <column name="READTIMES" />
+        </property>
+        <property name="images" type="java.lang.String">
+            <column name="IMAGES" />
+        </property>
+        <property name="newsKey" type="java.lang.String">
+            <column name="NEWSKEY" />
+        </property>
+        <property name="access" type="boolean">
+            <column name="ACCESS" />
+        </property>
+        <property name="commentsCount" type="java.lang.Long">
+            <column name="COMMENTSCOUNT" />
+        </property>
+        <property name="createTime" type="java.util.Date">
+            <column name="CREATETIME" />
+        </property>
+        <property name="modifyTime" type="java.util.Date">
+            <column name="MODIFYTIME" />
+        </property>
+        <many-to-one name="createUser" class="io.shuqi.graduation.domain.User" fetch="join">
+            <column name="CREATEUSER" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

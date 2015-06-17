@@ -1,0 +1,19 @@
+/*topdown nav styles */
+.topdown{position: fixed;top: 200px;right: 20px;width: 24px;display: none;}
+
+.bg-main a:hover,.topLogin a:hover{color: #FFF;}
+
+#container{width: 100%;}
+.sepLine{height: 20px;}
+.tocenter{width: 1024px;margin: 0px auto;}
+/*轮播文字透明*/
+.carousel-caption,.carousel-control{filter:alpha(opacity=50); -khtml-opacity: 0.5;-moz-opacity:0.5;opacity:0.5;}
+
+/*课程中心的样式*/
+#coursenav{width: 240px;height: 500px;padding-top: 10px;}
+#coursenav>ul li{list-style: none;display:block;height: 20px;line-height: 20px;font-size: 16px;margin-top: 10px;}
+#coursenav>ul .active {border-left:#00AA88 5px solid;padding-left: 5px;}
+
+#courseBody .panel-body{text-indent: 2em;}
+/* #courseBody img{width: 700px;text-align: center;} */
+/* .descriptionContent img{width: 700px;text-align: center;} */

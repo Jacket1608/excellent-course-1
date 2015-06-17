@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2015 2:19:22 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="io.shuqi.graduation.domain.BbsBlock" table="t_BBSBLOCK">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <property name="blockRules" type="java.lang.String">
+            <column name="BLOCKRULES" sql-type="text"/>
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" sql-type="text"/>
+        </property>
+        <set name="children" table="BBSBLOCK" inverse="false" lazy="true">
+            <key>
+                <column name="parent" />
+            </key>
+            <one-to-many class="io.shuqi.graduation.domain.BbsBlock" />
+        </set>
+        <many-to-one name="parent" class="io.shuqi.graduation.domain.BbsBlock" fetch="join">
+            <column name="PARENT" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,31 @@
+mysql 的驱动
+
+c3p0数据源  ${c3p0}/lib/*.jar
+dbcp数据源  ${dbcp}/common-dbcp.jar
+
+hibernate相关的相关包
+${hibernate3.6}/hibernate3.6.jar
+${hibernate3.6}/lib/required/*.jar
+${hibernate3.6}/jpa/*.jar	//3.6依赖该包
+
+spring相关的jar包
+${spring3.2}/libs/相关的jar包
+spring-aop依赖包:aopalliance.jar
+aspectj
+cglib-nodep
+
+commons-logging
+slf4j
+log4j
+commons-io
+commons-fileupload
+jstl的jar包
+json数据解析包
+
+
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'loginController': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private io.shuqi.graduation.service.UserService io.shuqi.graduation.controller.LoginController.userService; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userService': Injection of autowired dependencies failed; nested exception is org.springframework.beans.factory.BeanCreationException: Could not autowire field: private io.shuqi.graduation.dao.UserDao io.shuqi.graduation.service.impl.UserServiceImpl.userDao; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'userDao': Injection of autowired dependencies failed; nested exception is 
+org.springframework.beans.factory.BeanCreationException: Could not autowire field: private org.hibernate.SessionFactory io.shuqi.graduation.base.AbstractBaseDao.sessionFactory; nested exception is 
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'sessionFactory' defined in class path resource [application-service.xml]: Invocation of init method failed; nested exception is 
+org.springframework.beans.BeanInstantiationException: Could not instantiate bean class [org.hibernate.cfg.Configuration]: Constructor threw exception; nested exception is java.lang.ClassCastException: 
+org.hibernate.annotations.common.reflection.java.JavaReflectionManager cannot be cast to org.hibernate.annotations.common.reflection.MetadataProviderInjector

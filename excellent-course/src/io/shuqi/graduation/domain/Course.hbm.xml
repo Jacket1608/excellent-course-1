@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2015 2:00:18 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="io.shuqi.graduation.domain.Course" table="t_COURSE">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
+        <many-to-one name="courseLevel" class="io.shuqi.graduation.domain.CourseLevel" fetch="join">
+            <column name="COURSELEVEL" />
+        </many-to-one>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" sql-type="text"/>
+        </property>
+        <property name="teacherTeam" type="java.lang.String">
+            <column name="TEACHERTEAM" sql-type="text"/>
+        </property>
+        <property name="teachContent" type="java.lang.String">
+            <column name="TEACHCONTENT" sql-type="text"/>
+        </property>
+        <property name="teachMethod" type="java.lang.String">
+            <column name="TEACHMETHOD" sql-type="text"/>
+        </property>
+        <property name="teachEnvironment" type="java.lang.String">
+            <column name="TEACHENVIRONMENT" sql-type="text"/>
+        </property>
+        <property name="teachOutline" type="java.lang.String">
+            <column name="TEACHOUTLINE" sql-type="text"/>
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2015 2:00:18 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="io.shuqi.graduation.domain.Attach" table="t_ATTACH">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="fileType" type="java.lang.String">
+            <column name="FILETYPE" />
+        </property>
+        <property name="createTime" type="java.util.Date">
+            <column name="CREATETIME" />
+        </property>
+        <property name="filePath" type="java.lang.String">
+            <column name="FILEPATH" />
+        </property>
+        <property name="fileName" type="java.lang.String">
+            <column name="FILENAME" />
+        </property>
+        <property name="downloadCount" type="java.lang.Long">
+            <column name="downloadCount" />
+        </property>
+        <property name="fileImages" type="java.lang.String">
+            <column name="fileImages" />
+        </property>
+         <property name="fromName" type="java.lang.String">
+            <column name="fromName" />
+        </property>
+        <property name="fromId" type="java.lang.Long">
+            <column name="FROMID" />
+        </property>
+        <property name="fromSubId" type="java.lang.Long">
+            <column name="FROMSUBID" />
+        </property>
+        <many-to-one name="createUser" class="io.shuqi.graduation.domain.User" fetch="join">
+            <column name="CREATEUSER" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>

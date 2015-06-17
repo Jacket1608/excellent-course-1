@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated May 4, 2015 9:57:30 AM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="io.shuqi.graduation.domain.NewsComments" table="t_NEWSCOMMENTS">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="native" />
+        </id>
+        <property name="content" type="java.lang.String">
+            <column name="CONTENT" sql-type="text"/>
+        </property>
+        <property name="createTime" type="java.util.Date">
+            <column name="CREATETIME" />
+        </property>
+        <property name="access" type="boolean">
+            <column name="ACCESS" />
+        </property>
+        <many-to-one name="news" class="io.shuqi.graduation.domain.News" fetch="join">
+            <column name="NEWS" />
+        </many-to-one>
+        <set name="children" table="NEWSCOMMENTS" inverse="false" lazy="true">
+            <key>
+                <column name="ID" />
+            </key>
+            <one-to-many class="io.shuqi.graduation.domain.NewsComments" />
+        </set>
+        <many-to-one name="parent" class="io.shuqi.graduation.domain.NewsComments" fetch="join">
+            <column name="PARENT" />
+        </many-to-one>
+        <many-to-one name="createUser" class="io.shuqi.graduation.domain.User" fetch="join">
+            <column name="createUser" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
