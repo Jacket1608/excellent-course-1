@@ -87,8 +87,8 @@ public class EncryptUtil {
      * 传入字符串、密钥，并加密字符串（对称加密加密），支持：DES、AES、DESede(3DES)
      * <br>生成时间：2014年5月2日  下午12:05:44
      * <br>返回值：String 密文
-     * <br>@param src
-     * <br>@param key
+     * <br>@param src 明文
+     * <br>@param keysrc 密码
      * <br>@param method(DES、AES、DESede)
      * <br>@return
      */
@@ -97,7 +97,7 @@ public class EncryptUtil {
         SecretKey key;
         try {
             //生成密钥
-            KeyGenerator kg =  KeyGenerator.getInstance(method);
+            KeyGenerator kg =  KeyGenerator.getInstance(keysrc);
             //初始化此密钥生成器。
             kg.init(new SecureRandom(keysrc.getBytes("utf-8")));
             key = kg.generateKey();
@@ -127,8 +127,8 @@ public class EncryptUtil {
      * 传入字符串、密钥、加密方式，并解密字符串（对称加密解密密），支持：DES、AES、DESede(3DES)
      * <br>生成时间：2014年5月2日  下午1:12:13
      * <br>返回值：String 密钥原文
-     * <br>@param sec
-     * <br>@param key
+     * <br>@param sec 密文
+     * <br>@param keysrc 密码 
      * <br>@param method(DES、AES、DESede)
      * <br>@return
      */
