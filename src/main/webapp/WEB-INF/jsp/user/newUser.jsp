@@ -66,21 +66,37 @@
 </div>
 <script type="text/javascript">
 	//新建用户
+	
 	function newUser() {
-		if($("#personalInfo>.check-error").length>0) return false;
-		$.ajax({url:'user/newUser',data : $('#newUser').serialize(),type : "POST",success : function(data) {
-						if(data.success){
-							var msgDialog = dialog({title:"操作成功",content:data.msg, width:400,}).show();
-							show("newUser");
-							setTimeout(
-									function(){
-					    				msgDialog.close();
-					    			}
-									,2000);
-						}else{
-							dialog({title:"操作失败",content:data.msg, width:300,okValue: '确定',ok: function(){}}).show();
+		if ($("#personalInfo>.check-error").length > 0)
+			return false;
+		$.ajax({
+			url : 'user/newUser',
+			data : $('#newUser').serialize(),
+			type : "POST",
+			success : function(data) {
+				if (data.success) {
+					var msgDialog = dialog({
+						title : "操作成功",
+						content : data.msg,
+						width : 400,
+					}).show();
+					show("newUser");
+					setTimeout(function() {
+						msgDialog.close();
+					}, 2000);
+				} else {
+					dialog({
+						title : "操作失败",
+						content : data.msg,
+						width : 300,
+						okValue : '确定',
+						ok : function() {
 						}
-			　}});
+					}).show();
+				}
+			}
+		});
 		return false;
 	}
 </script>

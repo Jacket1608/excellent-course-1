@@ -10,8 +10,9 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONObject;
 
+
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -171,7 +172,7 @@ public class InfoServiceImpl extends InfoService {
 				result.put("success", false);
 				result.put("msg", "你当前未登陆，不能评论额！");
 			}
-			JSONObject jsonObject = JSONObject.fromObject(result);
+			JSONObject jsonObject = new JSONObject(result);
 			try {
 				response.setContentType("text/json;charset=UTF-8");
 				response.getWriter().print(jsonObject.toString());

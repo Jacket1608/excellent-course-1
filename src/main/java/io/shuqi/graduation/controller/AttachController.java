@@ -16,8 +16,9 @@ import io.shuqi.graduation.service.FileService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSONObject;
 
+
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -67,7 +68,7 @@ public class AttachController {
 	@RequestMapping(value="/attach/upload/attach",method=RequestMethod.POST)
 	public void attachUpload(@RequestParam(value="attach",required=true)MultipartFile file,@RequestParam(value="dir",required=true)String dir,HttpServletRequest request,HttpServletResponse response) throws NoRightException, IOException{
 		response.setContentType("text/html;charset=UTF-8");
-		JSONObject jsonObject = JSONObject.fromObject(fileService.fileUpload(file,dir,request));
+		JSONObject jsonObject = new JSONObject(fileService.fileUpload(file,dir,request));
 		response.getWriter().print(jsonObject.toString());
 		response.flushBuffer();
 	}
