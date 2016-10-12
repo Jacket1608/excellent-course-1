@@ -207,6 +207,8 @@ public class User {
 			return false;
 		}
 	}
-	
-	
+	@Override
+	public int hashCode() {
+		return super.hashCode();
+	}
 }

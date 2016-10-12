@@ -66,10 +66,8 @@
 </div>
 <script type="text/javascript">
 	//新建用户
-	
 	function newUser() {
-		if ($("#personalInfo>.check-error").length > 0)
-			return false;
+		if($("#personalInfo>.check-error").length>0) return false;
 		$.ajax({
 			url : 'user/newUser',
 			data : $('#newUser').serialize(),

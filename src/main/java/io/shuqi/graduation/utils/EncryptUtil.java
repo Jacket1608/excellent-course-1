@@ -15,14 +15,15 @@ import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.SecretKey;
 
-import com.sun.xml.internal.messaging.saaj.packaging.mime.util.BASE64DecoderStream;
-import com.sun.xml.internal.messaging.saaj.packaging.mime.util.BASE64EncoderStream;
+import org.apache.commons.codec.binary.Base64;
+
 /**
  * 加密工具类
  * @author shuqi
  * @date   2015年4月27日
  * @version since 1.0
  */
+@SuppressWarnings("restriction")
 public class EncryptUtil {
 	/**
      * 传入名文和公钥钥对数据进行RSA解密
@@ -38,7 +39,7 @@ public class EncryptUtil {
             Cipher cip = Cipher.getInstance("RSA");
             cip.init(cip.ENCRYPT_MODE, pubkey);
             byte[] by = cip.doFinal(src.getBytes());
-            return new String(BASE64EncoderStream.encode(by));
+            return new String(Base64.encodeBase64(by));
             
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
@@ -66,7 +67,7 @@ public class EncryptUtil {
         try {
             Cipher cip = Cipher.getInstance("RSA");
             cip.init(cip.DECRYPT_MODE, privkey);
-            byte[] by = BASE64DecoderStream.decode(sec.getBytes());
+            byte[] by = Base64.decodeBase64(sec.getBytes());
             return new String(cip.doFinal(by));
             
         } catch (NoSuchAlgorithmException e) {
@@ -107,7 +108,7 @@ public class EncryptUtil {
             ciph.init(Cipher.ENCRYPT_MODE, key);
             ciph.update(src.getBytes("utf-8"));
             //使用64进行编码，一避免出现丢数据情景
-            byte[] by = BASE64EncoderStream.encode(ciph.doFinal());
+            byte[] by =  Base64.encodeBase64(ciph.doFinal());
             return new String(by);
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
@@ -145,7 +146,7 @@ public class EncryptUtil {
             Cipher ciph =  Cipher.getInstance(method);
             ciph.init(ciph.DECRYPT_MODE, key);
             //使用64进行解码，一避免出现丢数据情景
-            byte[] by = BASE64DecoderStream.decode(sec.getBytes());
+            byte[] by = Base64.decodeBase64(sec.getBytes());
             ciph.update(by);
             return new String(ciph.doFinal());
             
@@ -180,7 +181,7 @@ public class EncryptUtil {
             md5.update(src.getBytes());
             byte[] encoding = md5.digest();
             //使用64进行编码，一避免出现丢数据情景
-            return new String(BASE64EncoderStream.encode(encoding));
+            return new String(Base64.decodeBase64(encoding));
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e+"加密失败！！");
         }
